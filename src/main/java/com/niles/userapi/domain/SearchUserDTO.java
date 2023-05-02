@@ -11,4 +11,7 @@ public record SearchUserDTO(
         String telephone,
         LocalDate registerDate
 ) {
+    public SearchUserDTO(Users user) {
+        this(user.getUserId(), user.getName(), user.getCpf(), user.getAddress(), user.getEmail(), user.getTelephone(), user.getRegisterDate());
+    }
 }

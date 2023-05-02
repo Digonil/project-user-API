@@ -3,6 +3,7 @@ package com.niles.userapi.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @EqualsAndHashCode(of = {"userId"})
-public class Users {
+public class Users implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
