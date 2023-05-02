@@ -4,6 +4,7 @@ import com.niles.userapi.domain.CreateUserDTO;
 import com.niles.userapi.domain.SearchUserDTO;
 import com.niles.userapi.domain.Users;
 import com.niles.userapi.repository.UsersRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 @Service
 public class UserService {
 
+    @Autowired
     private UsersRepository usersRepository;
 
 
@@ -42,18 +44,16 @@ public class UserService {
         }
         return null;
     }
+
     public List<SearchUserDTO> queryByName(String name) {
         List<Users> usersList = usersRepository.findQueryByName(name);
         return usersList.stream().map(SearchUserDTO::new).collect(Collectors.toList());
     }
 
     public void deleteUser(Long userId) {
-        Optional<Users> user = usersRepository.findById(userId);
-
-        if (user.isPresent()) {
-            usersRepository.delete(user.get());
+        var user = usersRepository.getReferenceById(userId);
+        if (user != null) {
+            usersRepository.delete(user);
         }
     }
-
-
 }
