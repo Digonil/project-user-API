@@ -31,19 +31,19 @@ public class UsersController {
         return ResponseEntity.ok(user);
     }
 
-    @GetMapping("{/cpf}")
+    @GetMapping("{cpf}")
     public ResponseEntity findByCpf(@PathVariable String cpf) {
         var user = userService.findByCpf(cpf);
         return ResponseEntity.ok(user);
     }
 
-    @GetMapping("{/name}")
+    @GetMapping("{name}")
     public ResponseEntity findQueryByName(@PathVariable String name) {
         var user = userService.findByCpf(name);
         return ResponseEntity.ok(user);
     }
 
-    @DeleteMapping("{/userId}")
+    @DeleteMapping("{userId}")
     public ResponseEntity deleteUser(@PathVariable Long userId) {
         userService.deleteUser(userId);
         return ResponseEntity.noContent().build();

@@ -1,6 +1,6 @@
 create table users
 (
-    userId        bigint auto_increment,
+    userId        bigint not null auto_increment,
     name          varchar(100) not null,
     cpf           varchar(20)  not null,
     address       varchar(100) not null,
